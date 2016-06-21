@@ -1,0 +1,13 @@
+\select@language {turkish}
+\contentsline {section}{\numberline {1}Eclipse Kurulumu}{3}{section.1}
+\contentsline {section}{\numberline {2}ARM GNU Eklentisinin Kurulumu}{4}{section.2}
+\contentsline {section}{\numberline {3}ARM GCC Derleyicisinin Kurulumu}{4}{section.3}
+\contentsline {subsection}{\numberline {3.1}Eclipse Ayarlar\IeC {\i }}{4}{subsection.3.1}
+\contentsline {section}{\numberline {4}OpenOCD Kurulumu}{4}{section.4}
+\contentsline {subsection}{\numberline {4.1}Eclipse Ayarlar\IeC {\i }}{5}{subsection.4.1}
+\contentsline {section}{\numberline {5}Stlink Ayarlar\IeC {\i }}{5}{section.5}
+\contentsline {section}{\numberline {6}Proje Olu\IeC {\c s}turma ve Derleme}{6}{section.6}
+\contentsline {section}{\numberline {7}Opsiyonel Eklentiler}{8}{section.7}
+\contentsline {section}{Ekler}{9}{section*.2}
+\contentsline {section}{\numberline {A}Build Path Hatas\IeC {\i }}{9}{appendix.A}
+\contentsline {section}{\numberline {B}STM32F4 ile \IeC {\"O}rnek Bir Proje}{9}{appendix.B}
