@@ -19,10 +19,21 @@
 \usepackage{subcaption}									%subfigure icin 
 
 \usepackage{graphicx}
+\graphicspath{ {images/} }	%resim dosyalari klasörü
 
-\usepackage{xcolor}
+\usepackage{xcolor}			%Caf cafli tablo icin gerekli
 \definecolor{bl}{rgb}{0.0,0.2,0.6} 
 
+%Caf cafli tablo icin
+\usepackage{colortbl}
+\usepackage{array}
+\usepackage{booktabs}
+\newcommand*{\arraycolor}[1]{\protect\leavevmode\color{#1}}
+\newcolumntype{A}{>{\columncolor{blue!50!white}}c}
+\newcolumntype{B}{>{\columncolor{LightGoldenrod}}c}
+\newcolumntype{C}{>{\columncolor{FireBrick!50}}c}
+\newcolumntype{D}{>{\columncolor{Gray!42}}c}
+%
 
 \usepackage{sectsty}
 \usepackage[compact]{titlesec} 
@@ -59,7 +70,7 @@
 \chead{}
 \rhead{}
 % Footer (you may change this to your own needs)
-\lfoot{\footnotesize \texttt{nazimyildizblog.com} - Template}
+\lfoot{\footnotesize \texttt{www.pau.edu.tr/} - Rapor}
 \cfoot{}
 \rfoot{\footnotesize page \thepage\ of \pageref{LastPage}}	% "Page 1 of 2"
 \renewcommand{\headrulewidth}{0.0pt}
@@ -95,7 +106,7 @@
 				\label{fig:motordrive}
 			\end{figure}
 			
-			Genel olarak 3 yada çok fazlı motorları sürerken şekil-\ref{fig:motordrive} daki aşamalar uygulamaya göre değerlendirilerek ihtiyaç doğrultusunda aralarında seçim yapılır.
+			Ayrıca genel olarak 3 yada çok fazlı motorları sürerken şekil-\ref{fig:motordrive} deki aşamalar uygulamaya göre değerlendirilerek ihtiyaç doğrultusunda aralarında seçim yapılır.
 	\end{abstract}
 	
 	%%% Start of the 'real' content of the article, using a two column layout
@@ -112,7 +123,7 @@
 		\label{fig:vf_kar}
 	\end{figure}
 	
-	Şekil-\ref{fig:vf_kar} de görüldüğü üzere 3 bölge bulunmaktadır. Bu bölgeler $0-f_{boost}$ aralığı motorun yük altında kalkabilmesini sağlayan nominal akı limitlerinin üzerine çıkıldığı bölge ve motor bu bölgenin dışına çıktan sonra durmadığı sürece bu bölgedeki çalışma tekrar uygulanmaz, $f_{boost}-f_{rated}$ aralığı doğrusal kontrol bölgesi burada sabit akı denetimi yapılmakta son olarak $f_{rated}$ sınırından sonra voltaj değeri sabit tutularak makina hızı yükseltilebilir ancak üretilen tork değeri düşmeye başlayacaktır.
+	Şekil-\ref{fig:vf_kar} de görüldüğü üzere 3 bölge bulunmaktadır. Bu bölgeler $0-f_{boost}$ aralığı motorun yük altında kalkabilmesini sağlayan nominal akı limitlerinin üzerine çıkıldığı bölge ve motor bu bölgenin dışına çıktıktan sonra durmadığı sürece bu bölgedeki çalışma tekrar uygulanmaz, $f_{boost}-f_{rated}$ aralığı doğrusal kontrol bölgesi burada sabit akı denetimi yapılmakta son olarak $f_{rated}$ sınırından sonra voltaj değeri sabit tutularak makina hızı yükseltilebilir ancak üretilen tork değeri düşmeye başlayacaktır.
 
 	\begin{figure}[hp]
 		\centering	
@@ -149,29 +160,48 @@
 	\end{figure}
 	
 	Şekil-\ref{fig:foc_acim} asenkron bir motor için FOC blok şeması verilmiştir. Asenkron motorlara özel olarak Current-Model bloğu içerisinde kayma değeri hesaplanır ve enkoder yada gözetleyiciden gelen pozisyon bilgisine dahil edilerek rotor akısının pozisyonu elde edilir. Motorun beklenen cevabı verebilmesi buradaki açının doğruluğuna bağlıdır.
-	
+	\newpage
 	\section{Kıyaslama-Sonuç}
-	Bahsedilen bu 2 yöntemin arasındaki öne çıkan en önemli fark ise akım, hız gibi bileşenlerin dinamik cevaplarıdır.
+	Bahsedilen bu 2 yöntemin arasındaki öne çıkan en önemli fark ise akım, hız gibi bileşenlerin dinamik cevaplarıdır. Şekil-\ref{subfig:speed_scaler} ve şekil-\ref{subfig:speed_vector} hız için gösterilmiştir. 
 	
 	\begin{figure}[hp]
 		\centering
-		\begin{subfigure}[hp]{1.0\textwidth}
-			\centering
+		\begin{subfigure}[b]{0.4\textwidth}
 			\shorthandoff{=}
-			\includegraphics[width=0.5\textwidth]{speed_scaler.png}
-			\caption{Skaler hız kontrol tepkisi}
+			\includegraphics[width=\textwidth]{speed_scaler.png}
+			\caption{Skaler}
 			\label{subfig:speed_scaler}
 			\shorthandon{=}
 		\end{subfigure}
-		\begin{subfigure}[hp]{1.0\textwidth}
-			\centering
+		~
+		\begin{subfigure}[b]{0.4\textwidth}
 			\shorthandoff{=}
-			\includegraphics[width=0.5\textwidth]{speed_vector.png}
-			\caption{Vektörel hız kontrol tepkisi}
+			\includegraphics[width=\textwidth]{speed_vector.png}
+			\caption{Vektörel}
 			\label{subfig:speed_vector}
 			\shorthandon{=}
 		\end{subfigure}
-		
 	\end{figure}
+	
+	Skaler ve vektörel kontrol arasında öne çıkan farklar Tablo-\ref{tab:scaler_vector_tab} verildiği gibidir.
+	
+	\begin{center}
+		\begin{table}[hb]
+		\begin{tabular}{| l | c | c |}
+			
+			\hline
+			 	 & Skaler Kontrol & Vektörel Kontrol \\ \hline
+			 Maliyet & Ucuz & Pahalı  \\ \hline
+			 Gerçeklenebilirlik & Kolay & Zor \\ \hline
+			 Dinamik Karakteristik & Yavaş & Hızlı \\ \hline
+			 Bağımsız Alan ve Tork Bileşeni Kontrolü & Yapılamaz & Yapılabilir \\ \hline
+			 İşlem Gücü İhtiyacı & Az & Çok fazla \\ \hline
+			 
+			 
+		\end{tabular}
+		\caption{Skaler ve Vektöler Kontrol Kıyaslaması}
+		\label{tab:scaler_vector_tab}
+		\end{table}
+	\end{center}
 	
 \end{document}
